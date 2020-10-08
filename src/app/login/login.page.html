@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="page-header">
+    <ion-img class="logo" src="assets/icon/favicon.png"></ion-img>
+    <h1>Learning Management System</h1>
+  </div>
+  <ion-list lines="none">
+    <form [formGroup]="myForm">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!myForm.controls.email.valid && (myForm.controls.email.dirty || submitAttempt)">
+        <ion-label>
+         <p class="error">Field cannot be empty</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="{{type}}" formControlName="password"></ion-input>
+        <ion-note slot="end" (click)="revealPassword()">
+          <ion-icon name="eye" [ngClass]="(type=='text')?'primary':''"></ion-icon>
+        </ion-note>
+      </ion-item>
+      <ion-item *ngIf="!myForm.controls.password.valid && (myForm.controls.password.dirty || submitAttempt)">
+        <ion-label>
+         <p class="error">Field cannot be empty</p>
+        </ion-label>
+      </ion-item>
+    </form>
+  </ion-list>
+  <div class="ion-padding">
+    <ion-button color="primary" expand="block" (click)="login()" routerDirection="forward">
+      Login
+    </ion-button>
+    <div class="links">
+      <p class="register">
+        Did not have account yet?
+        <a routerLink="/register" routerDirection="forward">
+          Register Now
+        </a>
+      </p>
+    </div>
+  </div>
+</ion-content>

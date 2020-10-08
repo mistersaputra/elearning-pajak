@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Foto profil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="notselected" [hidden]="photos.image!==''" (click)="presentActionSheet()">
+    <img class="slide-image" src="assets/img/notselected.png">
+    <div class="slide-title">
+      <h4>Upload foto profil</h4>
+      <p>Klik disini untuk memilih foto anda</p>
+    </div>
+  </div>
+  <input id="files" type="file" class="form-control" name="documents" (change)="onChange($event)">
+  <ion-row class="ion-no-padding">
+    <ion-card size="12" *ngIf="photos.image!==''" class="ion-padding">
+      <div class="image">
+        <div class="finishupload" *ngIf="photos.statusUpload == 'success'">
+          <ion-icon name="checkmark"></ion-icon>
+        </div>
+        <div class="errorupload" *ngIf="photos.statusUpload == 'error'" (click)=postImage()>
+          <ion-icon name="cloud-upload"></ion-icon>
+        </div>
+        <div class="deletephoto" (click)="deletePhoto()" *ngIf="photos.statusUpload == 'hold'">
+          <ion-icon name="trash"></ion-icon>
+        </div>
+        <div class="photo-image" *ngIf="photos.image" [ngStyle]="{'background-image': 'url(data:image/jpeg;base64,' + photos.image + ')'}"></div>
+        <div class="progress-count" *ngIf="photos.progressUpload !== 0 && photos.progressUpload !== 100">
+          {{photos.progressUpload}}%
+        </div>
+        <ion-progress-bar 
+          color="primary"
+          [value]="photos.progressUpload/100">
+        </ion-progress-bar>
+      </div>
+    </ion-card>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-button color="primary" expand="block" (click)="onSubmit()" [disabled]="btndisabled">
+        Register
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

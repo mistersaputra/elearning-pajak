@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Sub Materi Kecil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sub Materi Kecil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let item of data" (click)="goSubDetails(1, 'Judul Materi')">
+      <ion-text>{{ item }}</ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

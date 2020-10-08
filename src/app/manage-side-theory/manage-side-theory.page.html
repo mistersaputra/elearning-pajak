@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Materi Kecil
+    </ion-title>
+    <ion-button slot="end" color="dark" fill="clear" (click)="info()">
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="loading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Materi Kecil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of data">
+      <ion-item (click)="goSub(1, 'Judul Materi')">
+        <ion-text>{{ item }}</ion-text>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(1)">Ubah</ion-item-option>
+        <ion-item-option color="danger" (click)="hapus(1)">Hapus</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-side-theory">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

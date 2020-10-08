@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      E-Learning Pajak
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,54 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">LMS Pajak</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="container">
+    <div class="logo">
+      <ion-img src="assets/icon/favicon.png"></ion-img>
+    </div>
+    <div class="menu">
+      <ion-button shape="round" size="large" routerLink="/articles">
+        <ion-icon slot="start" name="book"></ion-icon> Artikel
+      </ion-button>
+      <ion-button shape="round" size="large" routerLink="/paper-work">
+        <ion-icon slot="start" name="documents"></ion-icon> Kertas Kerja
+      </ion-button>
+      <ion-button shape="round" size="large" routerLink="/side-theory">
+        <ion-icon slot="start" name="easel"></ion-icon> Materi Kecil
+      </ion-button>
+    </div>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" size="small">
+    <ion-fab-button color="secondary">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-list class="fab-menu">
+        <ion-item *ngIf="role == 1" color="dark" routerLink="/manage-articles" lines="none">
+          <ion-label>
+            <ion-icon name="easel"></ion-icon> Kelola Artikel
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="role == 1" color="dark" lines="none">
+          <ion-label>
+            <ion-icon name="documents"></ion-icon> Kelola Kertas Kerja
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="role == 1" color="dark" routerLink="/manage-side-theory" lines="none">
+          <ion-label>
+            <ion-icon name="book"></ion-icon> Kelola Materi Kecil
+          </ion-label>
+        </ion-item>
+        <ion-item color="dark" (click)="logout()" routerLink="/login" routerDirection="back" lines="none">
+          <ion-label>
+            <ion-icon name="log-out"></ion-icon> Logout
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

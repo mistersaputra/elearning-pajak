@@ -1,0 +1,21 @@
+.image {
+  width: 90%;
+  text-align: center;
+  margin: 20px auto;
+  ion-img {
+    margin: 15px auto;
+    width: 100%;
+    max-width: 300px;
+  }
+  ion-list {
+    margin: 15px 0;
+  }
+}
+
+#filesImage {
+  display: none;
+}
+
+.center{
+  text-align: center;
+}

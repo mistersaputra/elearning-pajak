@@ -1,0 +1,208 @@
+#files {
+  display: none;
+}
+.notselected{
+  text-align: center;
+  .slide-image {
+    max-height: 50%;
+    max-width: 90%;
+    @media (min-width:320px)  { 
+      /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+      max-height: 50%;
+      max-width: 90%;
+    }
+    @media (min-width:480px)  { 
+      /* smartphones, Android phones, landscape iPhone */
+      max-height: 50%;
+      max-width: 70%;
+    }
+    @media (min-width:600px)  { 
+      /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+      max-height: 50%;
+      max-width: 60%;
+    }
+    @media (min-width:740px)  { 
+      /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+      max-height: 50%;
+      max-width: 50%;
+    }
+    @media (min-width:801px)  { 
+      /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+      max-height: 50%;
+      max-width: 40%;
+    }
+    margin: 18px 0;
+    width: auto;
+    height: auto;
+  }
+  .slide-title {
+    color: #909090;
+    margin-top: -10px;
+    h4{
+      color: #212121;
+    }
+  }
+}
+.box{
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.add-more{
+  cursor: pointer;
+}
+ion-card {
+  width: 100%;
+  margin: 0 !important;
+  margin-top: 10px !important;
+  padding: 5px !important;
+  outline: 1px solid rgba(0,0,0,0.12);
+  outline-offset: -5px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  position: relative;
+  .image{
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    .loadingdata{
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      font-size: 40px;
+      -webkit-transition: 200ms;
+      transition: 200ms;
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+      ion-spinner {
+        width: 30px !important;
+        height: 30px !important;
+        margin-top: calc(50% - 20px);
+      }
+      ion-spinner * {
+        stroke: #07b9e6;
+      }
+      ion-spinner.waitingupload *{
+        stroke: #fff;
+      }
+    }
+    .finishupload{
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      ion-icon{
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+        font-size: 20px;
+        position: absolute;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        border-radius: 50%;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+    }
+    .errorupload{
+      i, ion-icon{
+        cursor: pointer;
+        color: #fff;
+        font-size: 20px;
+        position: absolute;
+        z-index: 3;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+    .deletephoto{
+      i, ion-icon{
+        cursor: pointer;
+        color: #fff;
+        font-size: 25px;
+        position: absolute;
+        z-index: 4;
+        top: 10px;
+        right: 10px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        padding: 5px 6px 4px 6.42px;
+        background-color: #F44336;
+      }
+    }
+    .photo-image{
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+  .image-more{
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    .fa-plus-square{
+      font-size: 40px;
+      position: absolute;
+      top: calc(50% - 30px);
+      left: calc(50% - 20px);
+    }
+    .more{
+      position: absolute;
+      top: calc(50% + 20px);
+      left: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.btn-upload{
+  margin-top: 10px;
+}
+
+.button-text {
+  --ion-color-base: none !important;
+}
+
+.progress-count {
+  background: #010101;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  color: #f1f1f1;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  opacity: 0.8;
+}
+
+ion-progress-bar, .progress-count  {
+  z-index: 3;
+}

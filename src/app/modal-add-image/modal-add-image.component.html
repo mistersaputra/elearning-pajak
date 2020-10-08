@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tambah Gambar</ion-title>
+    <ion-button class="close" color="primary" slot="end" (click)="closeModalCancel()">Tutup</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list [formGroup]="myForm">
+    <ion-item>
+      <ion-label position="floating">Judul Gambar</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+    <ion-item lines="none" *ngIf="!myForm.controls.title.valid && (myForm.controls.title.dirty || submitAttempt)">
+      <ion-label>
+        <p class="error">Judul gambar tidak boleh kosong</p>
+      </ion-label>
+    </ion-item>
+    <div class="image">
+      <ion-img [src]="photo.base64Image"></ion-img>
+      <input id="filesImage" type="file" class="form-control" name="documents" (change)="onChange($event)">
+      <ion-button shape="round" expand="block" color="secondary" (click)="presentActionSheet()">Pilih gambar</ion-button>
+      <ion-item lines="none" *ngIf="!myForm.controls.image.valid && (myForm.controls.image.dirty || submitAttempt)" class="center">
+        <ion-label>
+          <p class="error">Gambar tidak boleh kosong</p>
+        </ion-label>
+      </ion-item>
+    </div>
+    
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-button color="primary" expand="block" (click)="save()">Tambahkan</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Kelola Artikel
+    </ion-title>
+    <ion-button slot="end" color="dark" fill="clear" (click)="info()">
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Kelola Artikel</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
+     <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="loading" *ngIf="loading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <div class="container" *ngIf="!loading">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of data">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-img [src]="item.featured_image_fullpath" class="img-loading" (ionImgDidLoad)="dataService.imageLoad($event)" (ionError)="dataService.imageDefault($event)"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{item.title}}</h3>
+            <p>{{item.description}}</p>
+          </ion-label>
+          <ion-badge color="medium" *ngIf="item.article_status.id == 1">Draft</ion-badge>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="edit(1)">Ubah</ion-item-option>
+          <ion-item-option color="danger" (click)="hapus(1)">Hapus</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-articles">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="lines">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Kertas Kerja</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <!-- Theme classes dark, material, bootstrap -->
+    <!-- [columns]="columns" -->
+    <!-- [selectionType]="'cell'"  -->
+    <ngx-datatable 
+      class="material"
+      [rows]="rows" 
+      [rowHeight]="50"
+      [columnMode]="'force'" 
+      [scrollbarH]="true" 
+      [scrollbarV]="false" 
+      [headerHeight]="50">
+      <ngx-datatable-column name="Name">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" class="cell">
+          <!-- <span title="Double click to edit"
+            (click)="editing[rowIndex + '-name'] = true"
+            *ngIf="!editing[rowIndex + '-name']">
+            {{ value }}
+          </span> -->
+            <!-- *ngIf="editing[rowIndex + '-name']" -->
+          <ion-input (ionBlur)="updateValue($event, 'name', rowIndex)"
+            type="text"
+            [value]="value"></ion-input>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Company">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <ion-input (ionBlur)="updateValue($event, 'company', rowIndex)"
+            type="text"
+            [value]="value"></ion-input>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Genre">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <ion-input (ionBlur)="updateValue($event, 'genre', rowIndex)"
+            type="text"
+            [value]="value"></ion-input>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-button color="primary" expand="block">Simpan</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
