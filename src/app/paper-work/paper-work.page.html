@@ -4,6 +4,16 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Kertas Kerja</ion-title>
+    <ion-buttons slot="primary" (click)="toggleEditing()">
+      <ion-button color="primary" fill="clear" *ngIf="!editing">
+        <ion-icon slot="start" name="create"></ion-icon>
+        Edit
+      </ion-button>
+      <ion-button color="primary" fill="clear" *ngIf="editing">
+        <ion-icon slot="start" name="save"></ion-icon>
+        Save
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,53 +22,50 @@
     <!-- Theme classes dark, material, bootstrap -->
     <!-- [columns]="columns" -->
     <!-- [selectionType]="'cell'"  -->
-    <ngx-datatable 
-      class="material"
-      [rows]="rows" 
-      [rowHeight]="50"
-      [columnMode]="'force'" 
-      [scrollbarH]="true" 
-      [scrollbarV]="false" 
-      [headerHeight]="50">
-      <ngx-datatable-column name="Name">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" class="cell">
-          <!-- <span title="Double click to edit"
-            (click)="editing[rowIndex + '-name'] = true"
-            *ngIf="!editing[rowIndex + '-name']">
-            {{ value }}
-          </span> -->
-            <!-- *ngIf="editing[rowIndex + '-name']" -->
-          <ion-input (ionBlur)="updateValue($event, 'name', rowIndex)"
-            type="text"
-            [value]="value"></ion-input>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Company">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-          <ion-input (ionBlur)="updateValue($event, 'company', rowIndex)"
-            type="text"
-            [value]="value"></ion-input>
-        </ng-template>
-      </ngx-datatable-column>
-
-      <ngx-datatable-column name="Genre">
-        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-          <ion-input (ionBlur)="updateValue($event, 'genre', rowIndex)"
-            type="text"
-            [value]="value"></ion-input>
-        </ng-template>
-      </ngx-datatable-column>
-
-    </ngx-datatable>
-
+    <div *ngIf="!editing">
+      <ngx-datatable 
+        class="material striped"
+        rowHeight="auto"
+        columnMode="force"
+        selectionType="cell" 
+        [rows]="rows" 
+        [scrollbarH]="true" 
+        [scrollbarV]="false" 
+        [headerHeight]="0">
+        <ngx-datatable-column [name]="item.name" [width]="200" *ngFor="let item of columns">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" class="cell">
+            <span>{{ value }}</span>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+    <div *ngIf="editing">
+      <ngx-datatable
+        class="material"
+        rowHeight="auto"
+        columnMode="force"
+        selectionType="cell" 
+        [rows]="rows" 
+        [scrollbarH]="true" 
+        [scrollbarV]="false" 
+        [headerHeight]="0">
+        <ngx-datatable-column  [name]="item.name" [width]="200" *ngFor="let item of columns">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row" class="cell">
+            <ion-input (ionBlur)="updateValue($event, item.name, rowIndex)"
+              (click)="log(item.name, rowIndex)"
+              type="text"
+              [value]="value"></ion-input>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
   </div>
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
   <ion-toolbar>
     <div class="ion-padding">
       <ion-button color="primary" expand="block">Simpan</ion-button>
     </div>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
