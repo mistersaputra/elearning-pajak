@@ -15,7 +15,7 @@ export class ArticlesPage implements OnInit {
 
   constructor(
     private router: Router,
-    private dataService: DataService,
+    public dataService: DataService,
     public alertController: AlertController
   ) {}
 
@@ -63,6 +63,6 @@ export class ArticlesPage implements OnInit {
   }
 
   details(id) {
-    this.router.navigate(['articles-details',{id: id}])
+    this.router.navigate(['article-details',{id: id}])
   }
 }

@@ -90,7 +90,11 @@ const routes: Routes = [
     path: 'paper-work',
     loadChildren: () => import('./paper-work/paper-work.module').then( m => m.PaperWorkPageModule),
     canActivate: [AuthGuardService]
+  },  {
+    path: 'article-details',
+    loadChildren: () => import('./article-details/article-details.module').then( m => m.ArticleDetailsPageModule)
   },
+
 ];
 
 @NgModule({

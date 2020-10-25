@@ -13,6 +13,7 @@ export class ManageSubSideTheoryPage implements OnInit {
   id: number
   materi: string
   data = []
+  loading: boolean;
 
   constructor(
     private route: ActivatedRoute,

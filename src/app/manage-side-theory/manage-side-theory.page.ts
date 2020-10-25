@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./manage-side-theory.page.scss'],
 })
 export class ManageSideTheoryPage implements OnInit {
-
+  loading: boolean;
   data = []
 
   constructor(

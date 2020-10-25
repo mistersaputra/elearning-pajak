@@ -61,11 +61,11 @@ export class PaperWorkPage implements OnInit {
       { name: 'Z' },
     ];
 
-    this.columns = [
-      { name: 'Name' },
-      { name: 'Company' },
-      { name: 'Genre' }
-    ];
+    // this.columns = [
+    //   { name: 'Name' },
+    //   { name: 'Company' },
+    //   { name: 'Genre' }
+    // ];
 
     const a = {
       "movies": [
@@ -642,8 +642,8 @@ export class PaperWorkPage implements OnInit {
       ]
     }
 
-    this.rows = a.movies;
-    // this.rows = b.data;
+    // this.rows = a.movies;
+    this.rows = b.data;
   }
 
   log(cell, rowIndex) {

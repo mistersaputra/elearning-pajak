@@ -11,10 +11,11 @@ import { AlertController } from '@ionic/angular';
 export class SubSideTheoryDetailsPage implements OnInit {
 
   data: any;
+  loading: boolean;
 
   constructor(
     private router: Router,
-    private dataService: DataService,
+    public dataService: DataService,
     public alertController: AlertController
   ) { }
 

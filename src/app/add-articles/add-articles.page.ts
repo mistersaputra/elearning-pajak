@@ -30,8 +30,6 @@ export class AddArticlesPage implements OnInit {
   photo = { title: '', base64Image: '', image: new File([],'') };
   submitAttempt = false;
   
-  private _htmlProperty: string = '<progress></progress>';
-
   constructor(
     public actionSheetCtrl: ActionSheetController,
     private dataService: DataService,
@@ -52,7 +50,6 @@ export class AddArticlesPage implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
   async presentActionSheet() {

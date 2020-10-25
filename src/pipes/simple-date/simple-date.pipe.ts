@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SimpleDatePipe implements PipeTransform {
   
-  transform(timestamp, args) {
+  transform(timestamp) {
     timestamp = timestamp.replace(' ', 'T')
     const formatDate = { year: 'numeric', month: 'numeric', day: 'numeric' };
     const formatTime = { hour: '2-digit', minute: '2-digit', hour12: false };

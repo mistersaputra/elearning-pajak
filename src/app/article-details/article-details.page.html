@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detail Artikel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="loading" *ngIf="loading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+  <div class="container ion-padding" *ngIf="!loading">
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="featured-image" *ngIf="featured_image">
+      <ion-img class="img-loading" (ionImgDidLoad)="dataService.imageLoad($event)" (ionError)="dataService.imageDefault($event)" [src]="featured_image"></ion-img>
+    </div>
+
+    <div class="description">
+      <ion-text [innerHTML]="description"></ion-text>
+    </div>
+
+    <div class="article-images">
+      <div class="image" *ngFor="let item of article_images">
+        <ion-img class="img-loading" (ionImgDidLoad)="dataService.imageLoad($event)" (ionError)="dataService.imageDefault($event)" [src]="item.image"></ion-img>
+        <ion-text>{{item.title}}</ion-text>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <ion-icon name="play-back-outline"></ion-icon>
+      <ion-icon name="play-forward-outline" class="right"></ion-icon>
+    </div>
+  </div>
+</ion-content>

@@ -15,7 +15,7 @@ export class ManageArticlesPage implements OnInit {
 
   constructor(
     private router: Router,
-    private dataService: DataService,
+    public dataService: DataService,
     public alertController: AlertController
   ) {}
 

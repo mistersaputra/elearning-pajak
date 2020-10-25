@@ -1,0 +1,34 @@
+.container {
+    .title {
+        margin: 20px 0;
+    }
+    .featured-image {
+        margin-bottom: 20px;
+        ion-img {
+            width: 100%;
+        }
+    }
+    .description {
+        margin-bottom: 20px;
+        ion-text {
+            line-height: 1.8;
+        }
+    }
+    .article-images {
+        .image {
+            text-align: center;
+            margin-bottom: 20px;
+            ion-img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .navigation {
+        font-size: 35px;
+        .right {
+            right: 20px;
+            position: absolute;
+        }
+    }
+}

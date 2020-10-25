@@ -31,7 +31,7 @@
   <div class="container" *ngIf="!loading">
     <ion-list>
       <div *ngFor="let item of data" >
-        <ion-item *ngIf="item.article_status.id == 2">
+        <ion-item *ngIf="item.article_status.id == 2" (click)="details(item.id)">
           <ion-thumbnail slot="start">
             <ion-img [src]="item.featured_image_fullpath" class="img-loading" (ionImgDidLoad)="dataService.imageLoad($event)" (ionError)="dataService.imageDefault($event)"></ion-img>
           </ion-thumbnail>
